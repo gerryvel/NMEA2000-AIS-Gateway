@@ -64,9 +64,9 @@ How to install and use the Arduino IDE is explained in the [NMEA2000 workshop](h
 
 # Hardware
 
-![grafik](https://github.com/gerryvel/NMEA2000-AIS-Gateway/assets/17195231/8baad071-a646-4ba3-8f42-7a44998f798f)
-![grafik](https://github.com/gerryvel/NMEA2000-AIS-Gateway/assets/17195231/a10b7d3c-709b-4742-80ae-550e47c85a12)
-![grafik](https://github.com/gerryvel/NMEA2000-AIS-Gateway/assets/17195231/7c2d3360-e16e-4912-a7ed-e8465b37f1b9)
+![grafik](https://github.com/gerryvel/NMEA2000-AIS-Gateway/assets/17195231/83855786-a03c-4407-b472-7f853699ecb1)
+![grafik](https://github.com/gerryvel/NMEA2000-AIS-Gateway/assets/17195231/f1b1aa31-199a-4601-bd97-b3e83618ea3f)
+![grafik](https://github.com/gerryvel/NMEA2000-AIS-Gateway/assets/17195231/4e7aa89b-1962-4835-9607-7e202026842d)
 
 The board can be ordered at Aisler.net: https://aisler.net/p/VYXKWDGC
 
@@ -76,6 +76,9 @@ You only need these parts for the gateway:
 - Adafruit Huzzah! ESP32 (for programming need USB-Adapter)[Link](https://www.exp-tech.de/plattformen/internet-of-things-iot/9350/adafruit-huzzah32-esp32-breakout-board)
 - SN65HVD230 [Link](https://www.reichelt.de/high-speed-can-transceiver-1-mbit-s-3-3-v-so-8-sn-65hvd230d-p58427.html?&trstct=pos_0&nbc=1)
 - Traco-Power TSR 1-2450 for 12V / 5V [Link](https://www.reichelt.de/dc-dc-wandler-tsr-1-1-w-5-v-1000-ma-sil-to-220-tsr-1-2450-p116850.html?search=tsr+1-24)
+- B360 [Link](https://www.reichelt.de/schottkydiode-60-v-3-a-do-214ab-smc-b-360-f-p95202.html?&trstct=pos_10&nbc=1)
+- 1N4148 [Link](https://www.reichelt.de/schalt-diode-100-v-150-ma-do-35-1n-4148-dio-p219454.html?&nbc=1)
+- BC847 [Link](https://www.reichelt.de/bipolartransistor-npn-45v-0-1a-0-25w-sot-23-bc-847a-smd-p18561.html?&nbc=1)
 
 
 # Updates:
