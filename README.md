@@ -2,6 +2,8 @@
 
 This repository shows how to build a gateway to read NMEA0183 AIS messages and transform them to NMEA2000 PGNs.
 
+![grafik](https://github.com/gerryvel/NMEA2000-AIS-Gateway/assets/17195231/892ed235-b84e-4af3-bd27-74ac6808b6d8)
+
 If you need the opposite direction, then this might be of interest for you: https://github.com/ronzeiller/NMEA0183-AIS
 
 The purpose is to use an existing NMEA0183 AIS receiver together with devices (e.g. MFD) that support only NMEA2000.
