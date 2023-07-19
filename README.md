@@ -9,9 +9,6 @@ Many new chart plotters only support NMEA2000 and do not have an additional RS23
 
 I had to change and add some AIS related [PGN structures](https://github.com/AK-Homberger/NMEA2000-AIS-Gateway/blob/bea3ec6255678d2c806bf09e5bebd815074605ea/MyAISToN2k/NMEA0183AIStoNMEA2000.h#L73) in addition to the NMEA2000 library to make this work also with Raymarine MFDs.
 
-![AIS1](https://github.com/AK-Homberger/NMEA2000-AIS-Gateway/blob/main/AIS1.jpg)
-![AIS2](https://github.com/AK-Homberger/NMEA2000-AIS-Gateway/blob/main/AIS2.JPG)
-
 The used ESP32 reads AIVDM messages from UART2 (connected to GPIO 16, baud rate 38400). Forwarding to NMEA2000 is done via a CAN bus transceiver.
 
 The solution is re-using AIS decoder code from [this](https://github.com/aduvenhage/ais-decoder) GitHub repository. It is published under [MIT-License](https://github.com/aduvenhage/ais-decoder/blob/master/LICENSE).
@@ -64,39 +61,14 @@ The Arduino code is in the "MyAISToN2k" folder. Open "MyAISToN2k.ino" in the Ard
 How to install and use the Arduino IDE is explained in the [NMEA2000 workshop](https://github.com/AK-Homberger/NMEA2000-Workshop).
 
 # Hardware
-The schematics and the PCB from the [WLAN gateway](https://github.com/AK-Homberger/NMEA2000WifiGateway-with-ESP32) can be used for the gateway. Just ignore the not needed parts.
 
-![schematics](https://github.com/AK-Homberger/NMEA2000WifiGateway-with-ESP32/blob/master/KiCAD/ESP32WifiAisTempVolt2/ESP32WifiAisTempVolt2.png)
+![grafik](https://github.com/gerryvel/NMEA2000-AIS-Gateway/assets/17195231/8baad071-a646-4ba3-8f42-7a44998f798f)
+![grafik](https://github.com/gerryvel/NMEA2000-AIS-Gateway/assets/17195231/652a8870-f99c-44ea-b9c8-74fbf894f9f1)
 
-![PCB](https://github.com/AK-Homberger/NMEA2000WifiGateway-with-ESP32/blob/master/KiCAD/ESP32WifiAisTempVolt2/ESP32WifiAisTempVolt2-PCB.png)
-
-The board can be ordered at Aisler.net: https://aisler.net/p/DNXXRLFU
-
-**!!! Be careful with placing the the ESP32 on the PCB. The USB connector has to be on the right side !!!**
-
-## Remove the 120 ohm resistor from the transceiver
-For unknown reasons, many CAN bus transceivers for the ESP32 have a 120 Ohm resistor built into them. The resistor does not belong to the devices at the ends of the stub lines, but to the ends of the backbone cable.
-
-Whether the transceiver contains a 120 ohm resistor can be determined either by looking at the [circuit diagram](https://github.com/AK-Homberger/NMEA2000-Workshop/blob/main/Docs/SN65HVD230%20CAN%20Board_SCH.pdf) or by measuring with the multimeter.
-
-A knife tip is suitable for removing the SMD resistor. Use it to scratch or pry off the resistance. With the transceiver shown here, place the tip of the knife in front of the resistor (between the chip and the resistor) and support the knife against the chip. Then lever the tip against the resistance and use it to scratch / loosen / break the resistance. Whichever happens first.
-
-![Transceiver](https://github.com/AK-Homberger/NMEA2000WifiGateway-with-ESP32/blob/master/CAN-Transceiver.jpg)
-
-It then looks like the picture. Then measure to be on the safe side. Without a 120 ohm resistor, the multimeter shows approx. 75 kOhm.
+The board can be ordered at Aisler.net: https://aisler.net/p/VYXKWDGC
 
 ## Parts:
 You only need these parts for the gateway:
-
-- U1 ESP32 [Link](https://www.amazon.de/AZDelivery-NodeMCU-Development-Nachfolgermodell-ESP8266/dp/B071P98VTG/ref=sxts_sxwds-bia-wc-drs3_0?__mk_de_DE=%C3%85M%C3%85%C5%BD%C3%95%C3%91&cv_ct_cx=ESP32&dchild=1&keywords=ESP32) 
-- J5 SN65HVD230 [Link](https://eckstein-shop.de/Waveshare-SN65HVD230-CAN-Board-33V-ESD-protection)
-- J2 D24V10F5 [Link](https://eckstein-shop.de/Pololu-5V-1A-Step-Down-Spannungsregler-D24V10F5)
-- R4 Resistor 4,7 KOhm [Link](https://www.reichelt.de/de/en/carbon-film-resistor-1-4-w-5-4-7-kohm-1-4w-4-7k-p1425.html?&nbc=1)
-- R5 Resistor 33 KOhm [Link](https://www.reichelt.de/de/en/carbon-film-resistor-1-4-w-5-33-kohm-1-4w-33k-p1412.html?&nbc=1)
-- Q2 Transistor BC547 [Link](https://www.reichelt.de/de/en/small-signal-transistors-npn-to-92-45-v-rnd-bc547-p223356.html?&nbc=1)
-- D1 Diode 1N4001 [Link](https://www.reichelt.com/de/en/rectifier-diode-do41-50-v-1-a-1n-4001-p1723.html?&nbc=1)
-- D2 Diode 1N4148 [Link](https://www.reichelt.de/schalt-diode-100-v-150-ma-do-35-1n-4148-p1730.html?search=1n4148)
-- J1, J3 Connector 2-pin [Link](https://www.reichelt.de/de/en/2-pin-terminal-strip-spacing-5-08-akl-101-02-p36605.html?&nbc=1)
 
 
 # Updates:
