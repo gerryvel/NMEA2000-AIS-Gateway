@@ -83,7 +83,12 @@ void setup() {
   NMEA2000.EnableForward(false);
   NMEA2000.SetMsgHandler(MyHandleNMEA2000Msg);
 
-  NMEA2000.Open();
+  if (NMEA2000.Open())
+    Serial.println(" NMEA2000 Initialized"), digitalWrite(LED(Red), 1);
+  else
+    Serial.println(" NMEA2000 Initialized failed"), digitalWrite(LED(Green), 1);
+
+ delay (1000);   
 }
 
 
@@ -169,7 +174,8 @@ void ParseAIVDM_Message() {
 void loop() {
 
 // LED
-  LEDblink(LED(LEDBoard)); // blink for loop run
+  LEDflash(LED(Blue)); // blink for loop run
+  digitalWrite(LED(Red), 0); // off for NMEA2000 ready
 
 
   NMEA2000.ParseMessages();
