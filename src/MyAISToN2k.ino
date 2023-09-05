@@ -13,6 +13,7 @@
 */
 // Reads AIVDM messages from NMEA0183 (ESP32 UART 2 on GPIO 16) and forwards them to the N2k bus
 // Version 0.7, 13.01.2022, AK-Homberger
+// Version 0.8, 11.08.2023, Gerry Sebb
 
 // Is using modified (clang#14 to clang#11) version of this AIS decoder: https://github.com/aduvenhage/ais-decoder
 // AIS decoder is under MIT license: https://github.com/aduvenhage/ais-decoder/blob/master/LICENSE
@@ -63,8 +64,8 @@ void setup() {
   NMEA2000.SetProductInformation("1", // Manufacturer's Model serial code
                                  10,  // Manufacturer's product code
                                  "NMEA0183 AIS to N2k",  // Manufacturer's Model ID
-                                 "1.0.0.1 (2015-11-18)", // Manufacturer's Software version code
-                                 "1.0.0.0 (2015-11-18)"  // Manufacturer's Model version
+                                 "1.0.0.2 (2023-08-18)", // Manufacturer's Software version code
+                                 "1.1.0.0 (2023-08-18)"  // Manufacturer's Model version
                                 );
   // Det device information
   NMEA2000.SetDeviceInformation(id,  // Unique number. Use e.g. Serial number.
@@ -157,7 +158,7 @@ void ParseAIVDM_Message() {
 
   // Select (comment/uncomment) if you want to decode only other ship (AIVDM) or also own ship (AIVDO) messages
   
-  // if (!NMEA0183Msg.IsMessageCode("VDM") && !NMEA0183Msg.IsMessageCode("VDO")) return;   // Not a AIVDM/AIVDO message, return
+  // if (!NMEA0183Msg.IsMessageCode("VDM") && !NMEA0183Msg.IsMessageCode("VDO")) return;
   if (!NMEA0183Msg.IsMessageCode("VDM")) return;   // Not a AIVDM message, return
 
   if (!NMEA0183Msg.GetMessage(buf, MAX_NMEA0183_MESSAGE_SIZE)) return;  // GetMessage copy to buffer failed
@@ -177,7 +178,7 @@ void loop() {
   LEDflash(LED(Blue)); // blink for loop run
   digitalWrite(LED(Red), 0); // off for NMEA2000 ready
 
-
+// NMEA2k
   NMEA2000.ParseMessages();
   ParseAIVDM_Message();      // Parse AIS
   CheckSourceAddressChange();
