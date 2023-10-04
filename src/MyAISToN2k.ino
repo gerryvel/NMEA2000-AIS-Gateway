@@ -41,9 +41,18 @@ tNMEA0183 NMEA0183;
 int NodeAddress;                    // To store last Node Address
 Preferences preferences;            // Nonvolatile storage on ESP32 - To store LastDeviceAddress
 
+const unsigned long TransmitMessages[] PROGMEM = { 129038L, // Class A position report
+                                                   129794L, // Class A static and voyage related data
+                                                   129802L, // Safety related broadcast message
+                                                   129039L, // Class B standard position report
+                                                   129040L, // Class B extended position report
+                                                   129809L, // Class B static data part A
+                                                   129810L, // Class B static data part B
+                                                   0
+                                                 };
+
 MyAisDecoder decoder;               // Create decoder object
 AIS::DefaultSentenceParser parser;  // Create parser object
-
 
 //*****************************************************************************
 void setup() {
@@ -87,7 +96,7 @@ void setup() {
   if (NMEA2000.Open())
     Serial.println(" NMEA2000 Initialized"), digitalWrite(LED(Red), 1);
   else
-    Serial.println(" NMEA2000 Initialized failed"), digitalWrite(LED(Green), 1);
+    Serial.println(" NMEA2000 Initialized failed"), digitalWrite(LED(Red), 1);
 
  delay (1000);   
 }
@@ -175,10 +184,10 @@ void ParseAIVDM_Message() {
 void loop() {
 
 // LED
-  LEDflash(LED(Blue)); // blink for loop run
+  LEDflash(LED(Green)); // blink for loop run
   digitalWrite(LED(Red), 0); // off for NMEA2000 ready
 
-// NMEA2k
+// NMEA
   NMEA2000.ParseMessages();
   ParseAIVDM_Message();      // Parse AIS
   CheckSourceAddressChange();
