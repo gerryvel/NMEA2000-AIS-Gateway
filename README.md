@@ -64,9 +64,8 @@ How to install and use the Arduino IDE is explained in the [NMEA2000 workshop](h
 
 # Hardware
 
-![grafik](https://github.com/gerryvel/NMEA2000-AIS-Gateway/assets/17195231/83855786-a03c-4407-b472-7f853699ecb1)
-![grafik](https://github.com/gerryvel/NMEA2000-AIS-Gateway/assets/17195231/f1b1aa31-199a-4601-bd97-b3e83618ea3f)
-![grafik](https://github.com/gerryvel/NMEA2000-AIS-Gateway/assets/17195231/4e7aa89b-1962-4835-9607-7e202026842d)
+![grafik](https://github.com/gerryvel/NMEA2000-AIS-Gateway/assets/17195231/8e712a91-7659-4c04-9c1b-aaa15964ecfc)
+![grafik](https://github.com/gerryvel/NMEA2000-AIS-Gateway/assets/17195231/90d778f7-7d0f-4435-b715-f36132301e8c)
 
 The board can be ordered at Aisler.net: https://aisler.net/p/VYXKWDGC
 
@@ -82,6 +81,7 @@ You only need these parts for the gateway:
 
 
 # Updates:
+- 01.09.23 Version 0.81 Hardware Update, add ESD Components in 12V Input and CanOutput 
 - 25.08.23 Version 0.8: Corrected esp_efuse_mac_get_default(chipid); and  (tN2kAISDTE) _dte, (tN2kAISTransceiverInformation) _ais_version);
 - 13.01.22 Version 0.7: Select wether AIVDO messages (own ship) are to be decoded also in addition to AIVDM.
 - 13.01.22 Version 0.6: Corrected time PGNs for ETA calculation and changed AIS PGN handling for Raymarine MFDs.
