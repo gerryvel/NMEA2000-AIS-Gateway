@@ -20,9 +20,6 @@
 
 // Currently following AIS message types are supported: 1-3, 5, 14, 18, 19, 24A, 24B
 
-#define ESP32_CAN_TX_PIN GPIO_NUM_5  // Set CAN TX port to 5 
-#define ESP32_CAN_RX_PIN GPIO_NUM_4  // Set CAN RX port to 4
-
 #include <Arduino.h>
 #include <NMEA2000_CAN.h>  // This will automatically choose right CAN library and create suitable NMEA2000 object
 #include <NMEA2000.h>
@@ -30,6 +27,7 @@
 #include <NMEA0183.h>
 #include <Preferences.h>
 #include "LED.h"
+#include "configuration.h"
 #include "NMEA0183AIStoNMEA2000.h"  // Contains class, global variables and code !!!
 
 #define MAX_NMEA0183_MESSAGE_SIZE 150
@@ -37,9 +35,6 @@
 // NMEA message and stream for AIS receiving
 tNMEA0183Msg NMEA0183Msg;
 tNMEA0183 NMEA0183;
-
-int NodeAddress;                    // To store last Node Address
-Preferences preferences;            // Nonvolatile storage on ESP32 - To store LastDeviceAddress
 
 const unsigned long TransmitMessages[] PROGMEM = { 129038L, // Class A position report
                                                    129794L, // Class A static and voyage related data
@@ -56,11 +51,11 @@ AIS::DefaultSentenceParser parser;  // Create parser object
 
 //*****************************************************************************
 void setup() {
-  uint8_t chipid[6];
-  uint32_t id = 0;
-  int i = 0;
 
   Serial.begin(115200);
+
+  Serial.printf("Motordaten setup %s start\n", Version);
+
   LEDInit();
 
   // Serial2.begin(38400, SERIAL_8N1);   // Configure Serial2 (GPIO 16)
