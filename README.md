@@ -81,6 +81,7 @@ You only need these parts for the gateway:
 
 
 # Updates:
+- 06.11.24 Version 0.9 add config.h 
 - 01.09.23 Version 0.81 Hardware Update, add ESD Components in 12V Input and CanOutput 
 - 25.08.23 Version 0.8: Corrected esp_efuse_mac_get_default(chipid); and  (tN2kAISDTE) _dte, (tN2kAISTransceiverInformation) _ais_version);
 - 13.01.22 Version 0.7: Select wether AIVDO messages (own ship) are to be decoded also in addition to AIVDM.
