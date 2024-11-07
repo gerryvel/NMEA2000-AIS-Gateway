@@ -7,8 +7,8 @@
 
 enum LED {
   Red = 33, 
-  Green = 26, 
-  Blue = 25,
+  Green = 25, 
+  Blue = 26,
   LEDBoard = 13 //Adafruit Huzzah32
   };
 
@@ -37,16 +37,32 @@ void LEDflash(int PIN = LED()){
    taskEnd();   
 }
 
-void LEDInit() {
+void LEDInit() {                        // Start Initialisierung
   pinMode(LED(Red),   OUTPUT);
   pinMode(LED(Blue),  OUTPUT);
   pinMode(LED(Green), OUTPUT);
-  pinMode(LED(LEDBoard), OUTPUT);
+  digitalWrite(LED(Red), HIGH);
+  delay(250);
+  digitalWrite(LED(Red), LOW);
+  digitalWrite(LED(Blue), HIGH);
+  delay(250);
+  digitalWrite(LED(Blue), LOW);
+  digitalWrite(LED(Green), HIGH);
+  delay(250);
+  digitalWrite(LED(Green), LOW);
 }
 
-void LEDoff() {
-  digitalWrite(LED(Blue), 0);
-  digitalWrite(LED(Green), 0);
-  digitalWrite(LED(Red), 0);
+void LEDon(int PIN = LED()) {
+  digitalWrite(PIN, HIGH);    
+}
+
+void LEDoff(int PIN = LED()) {
+  digitalWrite(PIN, LOW);
+}
+
+void LEDoff_RGB() {
+  digitalWrite(LED(Blue), LOW);
+  digitalWrite(LED(Green),LOW);
+  digitalWrite(LED(Red), LOW);
 }
 

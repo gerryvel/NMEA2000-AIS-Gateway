@@ -20,8 +20,8 @@
 
 // Currently following AIS message types are supported: 1-3, 5, 14, 18, 19, 24A, 24B
 
-#define ESP32_CAN_TX_PIN GPIO_NUM_5  // Set CAN TX port to 5 
-#define ESP32_CAN_RX_PIN GPIO_NUM_4  // Set CAN RX port to 4
+#define ESP32_CAN_TX_PIN GPIO_NUM_4  // Set CAN TX port to 4 
+#define ESP32_CAN_RX_PIN GPIO_NUM_5  // Set CAN RX port to 5
 
 #include <Arduino.h>
 #include <NMEA2000_CAN.h>  // This will automatically choose right CAN library and create suitable NMEA2000 object
@@ -62,6 +62,8 @@ void setup() {
 
   Serial.begin(115200);
   LEDInit();
+  delay(1000);
+
 
   // Serial2.begin(38400, SERIAL_8N1);   // Configure Serial2 (GPIO 16)
   NMEA0183.Begin(&Serial2, 3, 38400); // Start NMEA0183 stream handling
@@ -70,7 +72,7 @@ void setup() {
   for (i = 0; i < 6; i++) id += (chipid[i] << (7 * i));
 
   // Setup NMEA2000 system
-  NMEA2000.SetProductInformation("1", // Manufacturer's Model serial code
+  NMEA2000.SetProductInformation("AIS01", // Manufacturer's Model serial code
                                  10,  // Manufacturer's product code
                                  "NMEA0183 AIS to N2k",  // Manufacturer's Model ID
                                  "1.0.0.2 (2023-08-18)", // Manufacturer's Software version code
@@ -93,12 +95,17 @@ void setup() {
   NMEA2000.EnableForward(false);
   NMEA2000.SetMsgHandler(MyHandleNMEA2000Msg);
 
-  if (NMEA2000.Open())
-    Serial.println(" NMEA2000 Initialized"), digitalWrite(LED(Red), 1);
-  else
-    Serial.println(" NMEA2000 Initialized failed"), digitalWrite(LED(Red), 1);
+  if (NMEA2000.Open()){
+    Serial.println("NMEA2000 Initialized");
+    LEDon(LED(Green));
+  }else{
+    Serial.println("NMEA2000 Initialized failed");
+    LEDon(LED(Red));
+  }
+ delay (1000);  
 
- delay (1000);   
+ LEDoff_RGB();
+
 }
 
 
@@ -185,7 +192,6 @@ void loop() {
 
 // LED
   LEDflash(LED(Green)); // blink for loop run
-  digitalWrite(LED(Red), 0); // off for NMEA2000 ready
 
 // NMEA
   NMEA2000.ParseMessages();
