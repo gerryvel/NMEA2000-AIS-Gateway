@@ -38,9 +38,6 @@
 tNMEA0183Msg NMEA0183Msg;
 tNMEA0183 NMEA0183;
 
-int NodeAddress;                    // To store last Node Address
-Preferences preferences;            // Nonvolatile storage on ESP32 - To store LastDeviceAddress
-
 const unsigned long TransmitMessages[] PROGMEM = { 129038L, // Class A position report
                                                    129794L, // Class A static and voyage related data
                                                    129802L, // Safety related broadcast message
@@ -56,11 +53,11 @@ AIS::DefaultSentenceParser parser;  // Create parser object
 
 //*****************************************************************************
 void setup() {
-  uint8_t chipid[6];
-  uint32_t id = 0;
-  int i = 0;
 
   Serial.begin(115200);
+
+  Serial.printf("Motordaten setup %s start\n", Version);
+
   LEDInit();
   delay(1000);
 
