@@ -20,9 +20,6 @@
 
 // Currently following AIS message types are supported: 1-3, 5, 14, 18, 19, 24A, 24B
 
-#define ESP32_CAN_TX_PIN GPIO_NUM_4  // Set CAN TX port to 4 
-#define ESP32_CAN_RX_PIN GPIO_NUM_5  // Set CAN RX port to 5
-
 #include <Arduino.h>
 #include <NMEA2000_CAN.h>  // This will automatically choose right CAN library and create suitable NMEA2000 object
 #include <NMEA2000.h>
@@ -32,7 +29,16 @@
 #include "LED.h"
 #include "NMEA0183AIStoNMEA2000.h"  // Contains class, global variables and code !!!
 
+// Variable
 #define MAX_NMEA0183_MESSAGE_SIZE 150
+#define ESP32_CAN_TX_PIN GPIO_NUM_4  // Set CAN TX port to 4 
+#define ESP32_CAN_RX_PIN GPIO_NUM_5  // Set CAN RX port to 5
+#define Version "V 0.9 vom 07.10.2024"
+uint8_t chipid[6];
+uint32_t id = 0;
+int i = 0;
+int NodeAddress;                    // To store last Node Address
+Preferences preferences;            // Nonvolatile storage on ESP32 - To store LastDeviceAddress
 
 // NMEA message and stream for AIS receiving
 tNMEA0183Msg NMEA0183Msg;
@@ -56,7 +62,7 @@ void setup() {
 
   Serial.begin(115200);
 
-  Serial.printf("Motordaten setup %s start\n", Version);
+  Serial.printf("NMEA2000-AIS-Gateway setup %s start\n", Version);
 
   LEDInit();
   delay(1000);
