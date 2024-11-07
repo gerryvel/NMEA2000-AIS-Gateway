@@ -3,12 +3,13 @@
 
 //Configuration LED
 //const int LEDBoard = 2;  //DevModule
-const int LEDBoard = 13;   //Adafruit Huzzah32
+//const int LEDBoard = 13;   //Adafruit Huzzah32
 
 enum LED {
   Red = 25, 
   Green = 26, 
-  Blue = 33
+  Blue = 33,
+  LEDBoard = 13
   };
 
 void LEDblink(int PIN = LED()){

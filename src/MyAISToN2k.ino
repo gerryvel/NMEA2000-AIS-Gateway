@@ -99,10 +99,10 @@ void setup() {
   NMEA2000.SetMsgHandler(MyHandleNMEA2000Msg);
 
   if (NMEA2000.Open()){
-    Serial.println(" NMEA2000 Initialized");
+    Serial.println("NMEA2000 Initialized");
     LEDon(LED(Green));
   }else{
-    Serial.println(" NMEA2000 Initialized failed");
+    Serial.println("NMEA2000 Initialized failed");
     LEDon(LED(Red));
   }
  delay (1000);  
