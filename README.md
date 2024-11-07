@@ -74,13 +74,14 @@ You only need these parts for the gateway:
 
 - Adafruit Huzzah! ESP32 (for programming need USB-Adapter)[Link](https://www.exp-tech.de/plattformen/internet-of-things-iot/9350/adafruit-huzzah32-esp32-breakout-board)
 - SN65HVD230 [Link](https://www.reichelt.de/high-speed-can-transceiver-1-mbit-s-3-3-v-so-8-sn-65hvd230d-p58427.html?&trstct=pos_0&nbc=1)
-- Traco-Power TSR 1-2450 for 12V / 5V [Link](https://www.reichelt.de/dc-dc-wandler-tsr-1-1-w-5-v-1000-ma-sil-to-220-tsr-1-2450-p116850.html?search=tsr+1-24)
+- TSR 1-2450 for 12V to 5V [Link](https://www.reichelt.de/dc-dc-wandler-tsr-1-1-w-5-v-1000-ma-sil-to-220-tsr-1-2450-p116850.html?search=tsr+1-24)
 - B360 [Link](https://www.reichelt.de/schottkydiode-60-v-3-a-do-214ab-smc-b-360-f-p95202.html?&trstct=pos_10&nbc=1)
 - 1N4148 [Link](https://www.reichelt.de/schalt-diode-100-v-150-ma-do-35-1n-4148-dio-p219454.html?&nbc=1)
 - BC847 [Link](https://www.reichelt.de/bipolartransistor-npn-45v-0-1a-0-25w-sot-23-bc-847a-smd-p18561.html?&nbc=1)
 
 
 # Updates:
+-  
 - 01.09.23 Version 0.81 Hardware Update, add ESD Components in 12V Input and CanOutput 
 - 25.08.23 Version 0.8: Corrected esp_efuse_mac_get_default(chipid); and  (tN2kAISDTE) _dte, (tN2kAISTransceiverInformation) _ais_version);
 - 13.01.22 Version 0.7: Select wether AIVDO messages (own ship) are to be decoded also in addition to AIVDM.
