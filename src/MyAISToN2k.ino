@@ -34,9 +34,7 @@
 #define ESP32_CAN_TX_PIN GPIO_NUM_4  // Set CAN TX port to 4 
 #define ESP32_CAN_RX_PIN GPIO_NUM_5  // Set CAN RX port to 5
 #define Version "V 0.9 vom 07.10.2024"
-uint8_t chipid[6];
-uint32_t id = 0;
-int i = 0;
+
 int NodeAddress;                    // To store last Node Address
 Preferences preferences;            // Nonvolatile storage on ESP32 - To store LastDeviceAddress
 
@@ -60,6 +58,10 @@ AIS::DefaultSentenceParser parser;  // Create parser object
 //*****************************************************************************
 void setup() {
 
+  uint8_t chipid[6];
+  uint32_t id = 0;
+  int i = 0;
+
   Serial.begin(115200);
 
   Serial.printf("NMEA2000-AIS-Gateway setup %s start\n", Version);
@@ -78,7 +80,7 @@ void setup() {
   NMEA2000.SetProductInformation("AIS01", // Manufacturer's Model serial code
                                  10,  // Manufacturer's product code
                                  "NMEA0183 AIS to N2k",  // Manufacturer's Model ID
-                                 "1.0.0.2 (2023-08-18)", // Manufacturer's Software version code
+                                 "1.0.0.2 (2024-10-07)", // Manufacturer's Software version code
                                  "1.1.0.0 (2023-08-18)"  // Manufacturer's Model version
                                 );
   // Det device information

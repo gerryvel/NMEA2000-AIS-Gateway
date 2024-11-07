@@ -6,9 +6,9 @@
 //const int LEDBoard = 13;   //Adafruit Huzzah32
 
 enum LED {
-  Red = 25, 
-  Green = 26, 
-  Blue = 33,
+  Red = 33, 
+  Green = 25, 
+  Blue = 26,
   LEDBoard = 13
   };
 
