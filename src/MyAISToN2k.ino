@@ -65,7 +65,7 @@ void setup() {
   for (i = 0; i < 6; i++) id += (chipid[i] << (7 * i));
 
   // Setup NMEA2000 system
-  NMEA2000.SetProductInformation("1", // Manufacturer's Model serial code
+  NMEA2000.SetProductInformation("AIS01", // Manufacturer's Model serial code
                                  10,  // Manufacturer's product code
                                  "NMEA0183 AIS to N2k",  // Manufacturer's Model ID
                                  "1.0.0.2 (2023-08-18)", // Manufacturer's Software version code
