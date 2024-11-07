@@ -27,10 +27,18 @@
 #include <NMEA0183.h>
 #include <Preferences.h>
 #include "LED.h"
-#include "configuration.h"
 #include "NMEA0183AIStoNMEA2000.h"  // Contains class, global variables and code !!!
 
+// Variable
 #define MAX_NMEA0183_MESSAGE_SIZE 150
+#define ESP32_CAN_TX_PIN GPIO_NUM_4  // Set CAN TX port to 4 
+#define ESP32_CAN_RX_PIN GPIO_NUM_5  // Set CAN RX port to 5
+#define Version "V 0.9 vom 07.10.2024"
+uint8_t chipid[6];
+uint32_t id = 0;
+int i = 0;
+int NodeAddress;                    // To store last Node Address
+Preferences preferences;            // Nonvolatile storage on ESP32 - To store LastDeviceAddress
 
 // NMEA message and stream for AIS receiving
 tNMEA0183Msg NMEA0183Msg;
@@ -54,9 +62,11 @@ void setup() {
 
   Serial.begin(115200);
 
-  Serial.printf("Motordaten setup %s start\n", Version);
+  Serial.printf("NMEA2000-AIS-Gateway setup %s start\n", Version);
 
   LEDInit();
+
+  delay(1000);
 
   // Serial2.begin(38400, SERIAL_8N1);   // Configure Serial2 (GPIO 16)
   NMEA0183.Begin(&Serial2, 3, 38400); // Start NMEA0183 stream handling
@@ -88,12 +98,17 @@ void setup() {
   NMEA2000.EnableForward(false);
   NMEA2000.SetMsgHandler(MyHandleNMEA2000Msg);
 
-  if (NMEA2000.Open())
-    Serial.println(" NMEA2000 Initialized"), digitalWrite(LED(Red), 1);
-  else
-    Serial.println(" NMEA2000 Initialized failed"), digitalWrite(LED(Red), 1);
+  if (NMEA2000.Open()){
+    Serial.println(" NMEA2000 Initialized");
+    LEDon(LED(Green));
+  }else{
+    Serial.println(" NMEA2000 Initialized failed");
+    LEDon(LED(Red));
+  }
+ delay (1000);  
 
- delay (1000);   
+  LEDoff_RGB();
+
 }
 
 
@@ -180,7 +195,6 @@ void loop() {
 
 // LED
   LEDflash(LED(Green)); // blink for loop run
-  digitalWrite(LED(Red), 0); // off for NMEA2000 ready
 
 // NMEA
   NMEA2000.ParseMessages();
