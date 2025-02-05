@@ -1,6 +1,7 @@
 # NMEA0183 to NMEA2000 AIS Gateway
 
 ![ESP32](https://img.shields.io/badge/ESP32-grey?logo=Espressif)
+![OBP](https://img.shields.io/badge/OpenSailing-OpenBoatsProjects-blue)
 
 This repository shows how to build a gateway to read NMEA0183 AIS messages and transform them to NMEA2000 PGNs.
 
