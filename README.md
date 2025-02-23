@@ -70,6 +70,7 @@ How to install and use the Arduino IDE is explained in the [NMEA2000 workshop](h
 
 ![grafik](https://github.com/gerryvel/NMEA2000-AIS-Gateway/assets/17195231/8e712a91-7659-4c04-9c1b-aaa15964ecfc)
 ![grafik](https://github.com/gerryvel/NMEA2000-AIS-Gateway/assets/17195231/90d778f7-7d0f-4435-b715-f36132301e8c)
+![image](https://github.com/user-attachments/assets/0f9a2b5e-f591-4115-a3f6-3465384aacb1)
 
 The board can be ordered at Aisler.net: https://aisler.net/p/VYXKWDGC
 
