@@ -33,26 +33,15 @@ Only AIVDM messages (other ships) are decoded by default. If you also want to de
 if (!NMEA0183Msg.IsMessageCode("VDM")) return;   // Not a AIVDM message, return
 ```
 ## Software Install
-To install the program on the ESP32 you do have two options:
+To install the program on the ESP32 you do have three options:
 
 1. Install the binary file with the **NodeMCU PyFlasher** tool
 2. Compile and upload the program with the **Arduino IDE**
-
-## NodeMCU PyFlasher
-
-The easiest way to upload the binary file is to use the [NodeMCU PyFlasher tool](https://github.com/marcelstoer/nodemcu-pyflasher) tool.
-
-Download the appropriate version for your operating system. Then download the binary file **[MyAISToN2k.ino.esp32.bin](https://github.com/AK-Homberger/NMEA2000-AIS-Gateway/blob/main/MyAISToN2k.ino.esp32.bin)** to the PC.
-
-Then start the NodeMCU PyFlaher program and select the downloaded [binary](https://github.com/AK-Homberger/NMEA2000-AIS-Gateway/blob/main/MyAISToN2k.ino.esp32.bin) and set the following options including the correct COM port:
-
-![Esptool](https://github.com/AK-Homberger/NMEA2000-AIS-Gateway/blob/main/NodeMCUPyFlasher.png)
-
-Then press "Flash NodeMCU". On some ESP32 it might be nessessary to press the "BOOT" button to start uploading.
+3. Compile and upload the program with the **VS Code**
 
 ## Arduino IDE
 
-To install the [software](https://github.com/AK-Homberger/NMEA2000-AIS-Gateway/tree/main/MyAISToN2k) with the Arduino IDE you have to install the IDE and the ESP32 board support.
+To install the [software](https://github.com/gerryvel/NMEA2000-AIS-Gateway/tree/main/MyAISToN2k) with the Arduino IDE you have to install the IDE and the ESP32 board support.
 
 To use the gateway the following libraries have to be installed (as ZIP file):
 - [NMEA2000](https://github.com/ttlappalainen/NMEA2000)
@@ -61,10 +50,8 @@ To use the gateway the following libraries have to be installed (as ZIP file):
 
 Click on the name of each repository, then click on "Code" and select "Download ZIP". Then in the Arduino IDE: Sketch, Include library, select Add .ZIP library and select the location of the downloaded libraries for each of the three libraries and install them one by one.
 
-Then download the [repository](https://github.com/AK-Homberger/NMEA2000-AIS-Gateway/archive/refs/heads/main.zip) as ZIP file and upack it.
-The Arduino code is in the "MyAISToN2k" folder. Open "MyAISToN2k.ino" in the Arduino IDE.
+Then download the [repository](https://github.com/gerryvel/NMEA2000-AIS-Gateway/archive/refs/heads/main.zip) as ZIP file and upack it.
 
-How to install and use the Arduino IDE is explained in the [NMEA2000 workshop](https://github.com/AK-Homberger/NMEA2000-Workshop).
 
 ## Hardware
 
