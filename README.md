@@ -32,7 +32,7 @@ Only AIVDM messages (other ships) are decoded by default. If you also want to de
 // if (!NMEA0183Msg.IsMessageCode("VDM") && !NMEA0183Msg.IsMessageCode("VDO")) return;   // Not a AIVDM/AIVDO message, return
 if (!NMEA0183Msg.IsMessageCode("VDM")) return;   // Not a AIVDM message, return
 ```
-# Software Install
+## Software Install
 To install the program on the ESP32 you do have two options:
 
 1. Install the binary file with the **NodeMCU PyFlasher** tool
@@ -66,7 +66,7 @@ The Arduino code is in the "MyAISToN2k" folder. Open "MyAISToN2k.ino" in the Ard
 
 How to install and use the Arduino IDE is explained in the [NMEA2000 workshop](https://github.com/AK-Homberger/NMEA2000-Workshop).
 
-# Hardware
+## Hardware
 
 ![grafik](https://github.com/gerryvel/NMEA2000-AIS-Gateway/assets/17195231/8e712a91-7659-4c04-9c1b-aaa15964ecfc)
 ![grafik](https://github.com/gerryvel/NMEA2000-AIS-Gateway/assets/17195231/90d778f7-7d0f-4435-b715-f36132301e8c)
@@ -85,7 +85,7 @@ You only need these parts for the gateway:
 - BC847 [Link](https://www.reichelt.de/bipolartransistor-npn-45v-0-1a-0-25w-sot-23-bc-847a-smd-p18561.html?&nbc=1)
 
 
-# Updates:
+## Updates:
 - 07.10.24 Version 0.9 LED cosmetic > LED init = RD/GN/BU on > N2k start GN 1s on, N2k fail RD 1s on, Loop GN flash
 - 01.09.23 Version 0.81 Hardware Update, add ESD Components in 12V Input and CanOutput 
 - 25.08.23 Version 0.8: Corrected esp_efuse_mac_get_default(chipid); and  (tN2kAISDTE) _dte, (tN2kAISTransceiverInformation) _ais_version);
